@@ -1,0 +1,21 @@
+{
+  "tests": [
+    {
+      "name": "Get site settings",
+      "method": "GET",
+      "path": "/?action=settings",
+      "expectedStatus": 200,
+      "expectedBody": {
+        "site_name": "string"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Get services list",
+      "method": "GET",
+      "path": "/?action=services",
+      "expectedStatus": 200,
+      "bodyMatcher": "partial"
+    }
+  ]
+}
