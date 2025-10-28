@@ -61,44 +61,47 @@ export const Home = ({ onNavigate }: HomeProps) => {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 mb-16">
-          <Card className="p-8 text-center hover:shadow-lg transition-shadow animate-fade-in border-2 border-primary/20">
-            <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Icon name="Shield" size={32} className="text-primary" />
+          <Card className="p-8 text-center hover:shadow-2xl transition-all duration-300 hover:scale-105 animate-fade-in border-2 border-primary/30 bg-gradient-to-br from-white to-blue-50 relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-primary/20 to-cyan-500/20 rounded-full blur-2xl -z-10 group-hover:scale-150 transition-transform duration-500"></div>
+            <div className="w-16 h-16 bg-gradient-to-br from-primary to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+              <Icon name="Shield" size={32} className="text-white" />
             </div>
-            <h3 className="text-xl font-bold mb-3">Безопасность</h3>
+            <h3 className="text-xl font-bold mb-3 bg-gradient-to-r from-primary to-cyan-600 bg-clip-text text-transparent">Безопасность</h3>
             <p className="text-muted-foreground">
               Гарантия безопасности вашего аккаунта на всех этапах работы
             </p>
           </Card>
 
-          <Card className="p-8 text-center hover:shadow-lg transition-shadow animate-fade-in border-2 border-primary/20">
-            <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Icon name="Clock" size={32} className="text-primary" />
+          <Card className="p-8 text-center hover:shadow-2xl transition-all duration-300 hover:scale-105 animate-fade-in border-2 border-primary/30 bg-gradient-to-br from-white to-cyan-50 relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-primary/20 to-cyan-500/20 rounded-full blur-2xl -z-10 group-hover:scale-150 transition-transform duration-500"></div>
+            <div className="w-16 h-16 bg-gradient-to-br from-primary to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+              <Icon name="Clock" size={32} className="text-white" />
             </div>
-            <h3 className="text-xl font-bold mb-3">Быстро</h3>
+            <h3 className="text-xl font-bold mb-3 bg-gradient-to-r from-primary to-cyan-600 bg-clip-text text-transparent">Быстро</h3>
             <p className="text-muted-foreground">
               Выполнение заказов в кратчайшие сроки с максимальным качеством
             </p>
           </Card>
 
-          <Card className="p-8 text-center hover:shadow-lg transition-shadow animate-fade-in border-2 border-primary/20">
-            <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Icon name="Star" size={32} className="text-primary" />
+          <Card className="p-8 text-center hover:shadow-2xl transition-all duration-300 hover:scale-105 animate-fade-in border-2 border-primary/30 bg-gradient-to-br from-white to-blue-50 relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-primary/20 to-cyan-500/20 rounded-full blur-2xl -z-10 group-hover:scale-150 transition-transform duration-500"></div>
+            <div className="w-16 h-16 bg-gradient-to-br from-primary to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+              <Icon name="Star" size={32} className="text-white" />
             </div>
-            <h3 className="text-xl font-bold mb-3">Качество</h3>
+            <h3 className="text-xl font-bold mb-3 bg-gradient-to-r from-primary to-cyan-600 bg-clip-text text-transparent">Качество</h3>
             <p className="text-muted-foreground">
               Профессиональный подход и внимание к деталям в каждом заказе
             </p>
           </Card>
         </div>
 
-        <Card className="p-8 bg-gradient-to-r from-primary/5 to-cyan-500/5 border-2 border-primary/30">
+        <Card className="p-8 bg-gradient-to-r from-primary/10 via-cyan-500/10 to-blue-500/10 border-2 border-primary/40 shadow-xl hover:shadow-2xl transition-shadow">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
+            <div className="w-12 h-12 bg-gradient-to-br from-primary to-cyan-500 rounded-full flex items-center justify-center shadow-lg">
               <Icon name="MessageCircle" size={24} className="text-white" />
             </div>
             <div>
-              <h3 className="text-xl font-bold mb-1">Нужна помощь?</h3>
+              <h3 className="text-xl font-bold mb-1 bg-gradient-to-r from-primary to-cyan-600 bg-clip-text text-transparent">Нужна помощь?</h3>
               <p className="text-muted-foreground">
                 Свяжитесь с нами в Telegram: <a href={`https://${settings.contact_telegram}`} className="text-primary hover:underline font-medium">{settings.contact_telegram}</a>
               </p>

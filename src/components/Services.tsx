@@ -100,14 +100,16 @@ export const Services = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service) => (
-            <Card key={service.id} className="p-6 hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 border-primary/20 animate-fade-in">
+            <Card key={service.id} className="p-6 hover:shadow-2xl transition-all duration-300 hover:scale-105 border-2 border-primary/30 animate-fade-in bg-gradient-to-br from-white via-blue-50 to-cyan-50 relative overflow-hidden group">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/20 to-cyan-500/20 rounded-full blur-3xl -z-10 group-hover:scale-150 transition-transform duration-500"></div>
+              
               <div className="flex items-start gap-3 mb-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Icon name="Trophy" size={24} className="text-primary" />
+                <div className="w-12 h-12 bg-gradient-to-br from-primary to-cyan-500 rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg">
+                  <Icon name="Trophy" size={24} className="text-white" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold mb-2">{service.title}</h3>
-                  <p className="text-3xl font-bold text-primary">{service.price} ₽</p>
+                  <h3 className="text-2xl font-bold mb-2 bg-gradient-to-r from-primary to-cyan-600 bg-clip-text text-transparent">{service.title}</h3>
+                  <p className="text-3xl font-bold bg-gradient-to-r from-primary to-cyan-500 bg-clip-text text-transparent">{service.price} ₽</p>
                 </div>
               </div>
               
@@ -121,7 +123,7 @@ export const Services = () => {
                 <ul className="text-sm text-muted-foreground space-y-1">
                   {service.requirements.split('\n').map((req, idx) => (
                     <li key={idx} className="flex items-start gap-2">
-                      <span className="text-primary mt-0.5">•</span>
+                      <span className="text-primary mt-0.5">⚡</span>
                       {req}
                     </li>
                   ))}
@@ -131,16 +133,16 @@ export const Services = () => {
               <Dialog open={isDialogOpen && selectedService?.id === service.id} onOpenChange={setIsDialogOpen}>
                 <DialogTrigger asChild>
                   <Button 
-                    className="w-full" 
+                    className="w-full bg-gradient-to-r from-primary to-cyan-500 hover:scale-105 transition-transform shadow-lg" 
                     onClick={() => setSelectedService(service)}
                   >
                     <Icon name="Send" size={18} className="mr-2" />
                     Отправить запрос
                   </Button>
                 </DialogTrigger>
-                <DialogContent>
+                <DialogContent className="bg-gradient-to-br from-white to-blue-50">
                   <DialogHeader>
-                    <DialogTitle>Заказ услуги: {service.title}</DialogTitle>
+                    <DialogTitle className="bg-gradient-to-r from-primary to-cyan-500 bg-clip-text text-transparent">Заказ услуги: {service.title}</DialogTitle>
                   </DialogHeader>
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
@@ -152,6 +154,7 @@ export const Services = () => {
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         required
+                        className="border-primary/30"
                       />
                     </div>
                     <div>
@@ -162,6 +165,7 @@ export const Services = () => {
                         value={uid}
                         onChange={(e) => setUid(e.target.value)}
                         required
+                        className="border-primary/30"
                       />
                     </div>
                     <div>
@@ -172,9 +176,10 @@ export const Services = () => {
                         value={telegram}
                         onChange={(e) => setTelegram(e.target.value)}
                         required
+                        className="border-primary/30"
                       />
                     </div>
-                    <Button type="submit" className="w-full">
+                    <Button type="submit" className="w-full bg-gradient-to-r from-primary to-cyan-500 hover:scale-105 transition-transform">
                       Отправить заявку
                     </Button>
                   </form>

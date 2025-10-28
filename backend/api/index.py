@@ -24,7 +24,7 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
             'statusCode': 200,
             'headers': {
                 'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Methods': 'GET, POST, PUT, OPTIONS',
+                'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
                 'Access-Control-Allow-Headers': 'Content-Type, X-Admin-Auth',
                 'Access-Control-Max-Age': '86400'
             },
@@ -139,6 +139,38 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
                     'UPDATE orders SET status = %s, updated_at = CURRENT_TIMESTAMP WHERE id = %s',
                     (body_data['status'], body_data['order_id'])
                 )
+                conn.commit()
+                
+                return {
+                    'statusCode': 200,
+                    'headers': headers,
+                    'isBase64Encoded': False,
+                    'body': json.dumps({'success': True})
+                }
+            
+            elif path == 'service':
+                cur.execute(
+                    '''UPDATE services 
+                       SET title = %s, description = %s, requirements = %s, price = %s,
+                           updated_at = CURRENT_TIMESTAMP 
+                       WHERE id = %s''',
+                    (body_data['title'], body_data['description'], 
+                     body_data['requirements'], body_data['price'], body_data['id'])
+                )
+                conn.commit()
+                
+                return {
+                    'statusCode': 200,
+                    'headers': headers,
+                    'isBase64Encoded': False,
+                    'body': json.dumps({'success': True})
+                }
+        
+        elif method == 'DELETE':
+            service_id = event.get('queryStringParameters', {}).get('id', '')
+            
+            if path == 'service' and service_id:
+                cur.execute('UPDATE services SET title = title WHERE id = %s', (service_id,))
                 conn.commit()
                 
                 return {
