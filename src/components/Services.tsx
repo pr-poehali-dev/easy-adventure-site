@@ -27,10 +27,17 @@ export const Services = () => {
   const { toast } = useToast();
 
   useEffect(() => {
-    fetch(`${API_URL}?action=services`)
-      .then(res => res.json())
-      .then(data => setServices(data))
-      .catch(console.error);
+    const loadServices = () => {
+      fetch(`${API_URL}?action=services`)
+        .then(res => res.json())
+        .then(data => setServices(data))
+        .catch(console.error);
+    };
+
+    loadServices();
+    const interval = setInterval(loadServices, 3000);
+
+    return () => clearInterval(interval);
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {

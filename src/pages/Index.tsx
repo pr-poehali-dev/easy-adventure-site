@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Home } from '@/components/Home';
 import { Services } from '@/components/Services';
 import { Admin } from '@/components/Admin';
@@ -6,14 +6,6 @@ import Icon from '@/components/ui/icon';
 
 const Index = () => {
   const [currentPage, setCurrentPage] = useState('home');
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      window.location.reload();
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-cyan-50">

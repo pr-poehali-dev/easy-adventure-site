@@ -23,14 +23,21 @@ export const Home = ({ onNavigate }: HomeProps) => {
   });
 
   useEffect(() => {
-    fetch(`${API_URL}?action=settings`)
-      .then(res => res.json())
-      .then(data => {
-        if (data.site_name) {
-          setSettings(data);
-        }
-      })
-      .catch(console.error);
+    const loadSettings = () => {
+      fetch(`${API_URL}?action=settings`)
+        .then(res => res.json())
+        .then(data => {
+          if (data.site_name) {
+            setSettings(data);
+          }
+        })
+        .catch(console.error);
+    };
+
+    loadSettings();
+    const interval = setInterval(loadSettings, 3000);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (

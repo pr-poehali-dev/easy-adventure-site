@@ -48,6 +48,13 @@ export const Admin = () => {
     if (isAuthenticated) {
       loadSettings();
       loadOrders();
+      
+      const interval = setInterval(() => {
+        loadSettings();
+        loadOrders();
+      }, 3000);
+
+      return () => clearInterval(interval);
     }
   }, [isAuthenticated]);
 
